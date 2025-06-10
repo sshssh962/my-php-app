@@ -1,0 +1,12 @@
+{
+  "name": "PHP + MariaDB Dev",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "web",
+  "workspaceFolder": "/var/www/html",
+  "forwardPorts": [8080, 8081],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "postCreateCommand": "echo 'Ready to code!'",
+  "remoteUser": "root"
+}
