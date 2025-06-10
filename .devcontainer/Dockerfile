@@ -1,10 +1,6 @@
-FROM php:8.3-apache
+FROM mcr.microsoft.com/devcontainers/php:8.3-apache
 
-# Install PHP extensions
-RUN docker-php-ext-install mysqli
+# Install mysqli and pdo_mysql
+RUN install-php-extensions mysqli pdo_mysql
 
-# Enable Apache mod_rewrite
-RUN a2enmod rewrite
-
-# Set working directory
 WORKDIR /var/www/html
