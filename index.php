@@ -1,15 +1,11 @@
 <?php
-$servername = "db";
-$username = "root";
-$password = "root";
-$database = "test_db";
+$dsn = "mysql:host=" . getenv("DB_HOST") . ";dbname=" . getenv("DB_NAME");
+$options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    $pdo = new PDO($dsn, getenv("DB_USER"), getenv("DB_PASSWORD"), $options);
+    echo "Connected successfully with PDO!";
+} catch (PDOException $e) {
+    echo "Connection failed: " . htmlspecialchars($e->getMessage());
 }
-echo "Connected successfully to the database!";
 ?>
